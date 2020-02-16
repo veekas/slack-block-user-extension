@@ -27,7 +27,7 @@ function hookApp(workspace: Workspace, node: HTMLElement) {
   if (!$appName) return
   const name = $appName.textContent as string
   const app = { id, name }
-  const blockBtn = createButton('Block 👿', {
+  const blockBtn = createButton('Block 🐝', {
     className: 'c-button c-button--danger c-button--medium p-member_profile_buttons__button null--outline null--medium'
   })
 
@@ -37,7 +37,7 @@ function hookApp(workspace: Workspace, node: HTMLElement) {
   }
 
   blockBtn.addEventListener('click', onClick);
-  
+
   (node.querySelector('.p-app_profile_card') as HTMLElement)
     .appendChild(blockBtn)
 
@@ -46,7 +46,7 @@ function hookApp(workspace: Workspace, node: HTMLElement) {
 function hookUser(workspace: Workspace, node: HTMLElement) {
   const $picture = node.querySelector('.p-member_profile_picture') as HTMLElement
   if (!$picture) return
-  const idMatch = $picture.style.backgroundImage 
+  const idMatch = $picture.style.backgroundImage
     && $picture.style.backgroundImage.match(/slack[^.]*\.com\/[^-]+-([^-]+)/)
   if (!idMatch) return
   const id = idMatch[1]
@@ -55,7 +55,7 @@ function hookUser(workspace: Workspace, node: HTMLElement) {
   const name = $name.textContent as string
   const user = { id, name }
 
-  const blockBtn = createButton('Block 👿', {
+  const blockBtn = createButton('Block 🐝', {
     className: 'c-button c-button--danger c-button--medium p-member_profile_buttons__button null--outline null--medium'
   })
 
@@ -65,7 +65,7 @@ function hookUser(workspace: Workspace, node: HTMLElement) {
   }
 
   blockBtn.addEventListener('click', onClick);
-  
+
   (node.querySelector('.p-member_profile_card__buttons') as HTMLElement)
     .appendChild(blockBtn)
 }

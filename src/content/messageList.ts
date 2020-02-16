@@ -22,7 +22,7 @@ const getUserIdFromVirtualItem = (node: Element) => {
   return userId
 }
 
-const crearteMessageListFilterer = (workspace: Workspace) => async () => {
+const createMessageListFilterer = (workspace: Workspace) => async () => {
   const messageNodes = document.querySelectorAll(MAIN_MESSAGE_LIST_SELECTOR)
   const blackList = workspace.blackList.list
   let isBlocked = false;
@@ -39,7 +39,7 @@ const crearteMessageListFilterer = (workspace: Workspace) => async () => {
   })
 }
 
-const crearteThreadFilterer = (workspace: Workspace) => async () => {
+const createThreadFilterer = (workspace: Workspace) => async () => {
   const messageNodes = document.querySelectorAll(THREAD_MESSAGE_LIST_SELECTOR)
   const blackList = workspace.blackList.list
   Array.from(messageNodes).forEach(node => {
@@ -88,7 +88,7 @@ export default async function startMessageListHook(workspace: Workspace) {
     const $messageList = document.body.querySelector('.c-message_list .c-virtual_list__scroll_container')
     if (!$messageList) return setTimeout(startObserve, 200)
     const messageListFilterer = throttle(
-      crearteMessageListFilterer(workspace),
+      createMessageListFilterer(workspace),
       500
     )
     observeDOM($messageList, { childList: true, subtree: false }, messageListFilterer)
@@ -102,7 +102,7 @@ export default async function startMessageListHook(workspace: Workspace) {
     if (!$secPanel) return false
     let stopThreadObserve: Function
     const messageListFilterer = throttle(
-      crearteThreadFilterer(workspace),
+      createThreadFilterer(workspace),
       500
     )
     onSideBarToggle($secPanel as HTMLElement, (toggle) => {
