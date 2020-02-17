@@ -1,10 +1,9 @@
 {
   "name": "Slack Block User (Fork)",
   "description": "Block Slack User's Messages",
-  "version": "1.2.4",
+  "version": "1.2.5",
   "permissions": [
     "storage",
-    "tabs",
     "https://*.slack.com/*"
   ],
   "options_ui": {
